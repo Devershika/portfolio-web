@@ -1,9 +1,33 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0a192f;
-  --foreground: #e6f1ff;
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root,
+.dark {
+  --background: #0e0f1c;
+  --foreground: #ebe8f4;
+  --muted: #9b94b0;
+  --body-mid: #c8c2d8;
+  --body-soft: #a39ab8;
+  --accent: #c4b5fd;
+  --accent-warm: #e879a9;
+  --accent-warm-text: #f5b8d4;
+  --surface-card: #15162a;
+  --border-subtle: rgba(255, 255, 255, 0.1);
   --font-sans: var(--font-montserrat);
+}
+
+.light {
+  --background: #f6f4fb;
+  --foreground: #16122a;
+  --muted: #5a5370;
+  --body-mid: #3f3954;
+  --body-soft: #6a627e;
+  --accent: #6d4ab8;
+  --accent-warm: #b84d7a;
+  --accent-warm-text: #8f3d62;
+  --surface-card: #ffffff;
+  --border-subtle: rgba(22, 18, 42, 0.12);
 }
 
 @theme inline {
@@ -18,40 +42,118 @@ body {
   color: var(--foreground);
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.bg-page {
+  background: var(--background);
+}
+
+.text-fg {
+  color: var(--foreground);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-warm {
+  color: var(--accent-warm);
+}
+
+.text-warm-light {
+  color: var(--accent-warm-text);
+}
+
+.text-body-mid {
+  color: var(--body-mid);
+}
+
+.text-body-soft {
+  color: var(--body-soft);
+}
+
+.border-accent-soft {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.border-warm-soft {
+  border-color: color-mix(in srgb, var(--accent-warm) 35%, transparent);
+}
+
+.border-warm-25 {
+  border-color: color-mix(in srgb, var(--accent-warm) 25%, transparent);
+}
+
+.border-section {
+  border-color: var(--border-subtle);
+}
+
+.hover-accent-muted:hover {
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.hover-border-accent:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.hover-text-accent:hover {
+  color: var(--accent);
+}
+
+.bg-accent-faint {
+  background-color: color-mix(in srgb, var(--accent-warm) 20%, transparent);
+}
+
+.bg-blog-card {
+  background-color: color-mix(in srgb, var(--surface-card) 88%, var(--background));
+}
+
+.shadow-portrait {
+  box-shadow: 0 0 32px color-mix(in srgb, var(--accent) 42%, transparent);
 }
 
 .glass-card {
-  border: 1px solid rgba(100, 255, 218, 0.2);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0.11),
-    rgba(255, 255, 255, 0.04)
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.035)
   );
   backdrop-filter: blur(14px);
   border-radius: 1rem;
+  transition: border-color 0.35s ease, background 0.35s ease;
+}
+
+.light .glass-card {
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(247, 244, 252, 0.75)
+  );
 }
 
 .ai-mosaic {
   height: 100%;
   width: 100%;
   background-image:
-    linear-gradient(135deg, rgba(100, 255, 218, 0.1), transparent 40%),
-    linear-gradient(225deg, rgba(255, 126, 95, 0.15), transparent 48%),
-    radial-gradient(circle at 15% 20%, rgba(100, 255, 218, 0.22), transparent 30%),
-    radial-gradient(circle at 80% 75%, rgba(255, 126, 95, 0.18), transparent 35%);
-  animation: pulseMosaic 8s ease-in-out infinite;
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 40%),
+    linear-gradient(225deg, color-mix(in srgb, var(--accent-warm) 18%, transparent), transparent 48%),
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 32%),
+    radial-gradient(circle at 80% 75%, color-mix(in srgb, var(--accent-warm) 16%, transparent), transparent 36%);
 }
 
 .name-glitch {
   position: relative;
-  text-shadow: 0 0 20px rgba(100, 255, 218, 0.35);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 35%, transparent);
   animation: glitch 1.8s steps(2, end) infinite;
 }
 
 .name-glitch::after {
   content: "|";
   margin-left: 8px;
-  color: #64ffda;
+  color: var(--accent);
   animation: blink 1s step-end infinite;
 }
 
@@ -80,8 +182,8 @@ body {
   transform: rotateY(180deg);
 }
 
-.btn-teal,
-.btn-orange {
+.btn-accent,
+.btn-warm {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -89,29 +191,45 @@ body {
   padding: 0.45rem 0.8rem;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
-.btn-teal {
-  border: 1px solid rgba(100, 255, 218, 0.45);
-  color: #64ffda;
+.btn-accent {
+  border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  color: var(--accent);
 }
 
-.btn-orange {
-  border: 1px solid rgba(255, 126, 95, 0.45);
-  color: #ffb09b;
+.btn-accent:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.btn-accent:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-warm {
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 48%, transparent);
+  color: var(--accent-warm-text);
 }
 
 .terminal-shell {
   background: linear-gradient(
     155deg,
-    rgba(8, 18, 33, 0.96),
-    rgba(12, 32, 53, 0.92)
+    rgba(12, 14, 28, 0.96),
+    rgba(18, 20, 40, 0.92)
   );
   box-shadow: 0 8px 45px rgba(0, 0, 0, 0.4);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.light .terminal-shell {
+  background: linear-gradient(155deg, #ffffff, #f0ecf8);
+  box-shadow: 0 8px 40px rgba(109, 74, 184, 0.12);
 }
 
 .terminal-label {
-  color: #64ffda;
+  color: var(--accent);
   display: grid;
   gap: 0.4rem;
   font-family: var(--font-geist-mono), monospace;
@@ -119,18 +237,36 @@ body {
 }
 
 .terminal-input {
-  border: 1px solid rgba(100, 255, 218, 0.3);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
   border-radius: 0.65rem;
-  background: rgba(10, 25, 47, 0.7);
-  color: #e6f1ff;
+  background: color-mix(in srgb, var(--background) 65%, #1a1c32);
+  color: var(--foreground);
   padding: 0.65rem 0.75rem;
   font-family: var(--font-geist-mono), monospace;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.light .terminal-input {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .terminal-input:focus {
   outline: none;
-  border-color: #64ffda;
-  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.form-message {
+  font-size: 0.875rem;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.form-message.ok {
+  color: var(--accent);
+}
+
+.form-message.err {
+  color: var(--accent-warm);
 }
 
 @keyframes glitch {
@@ -146,18 +282,6 @@ body {
   }
   75% {
     transform: translate(1px, 1px);
-  }
-}
-
-@keyframes pulseMosaic {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 1;
   }
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Montserrat } from "next/font/google";
+import ThemeProvider from "./components/ThemeProvider";
 import "./globals.css";
 
 function siteUrl(): string {
@@ -77,8 +78,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${montserrat.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -1,13 +1,9 @@
 import Image from "next/image";
-import {
-  CalendarDays,
-  Code2,
-  Download,
-  Mail,
-} from "lucide-react";
+import { CalendarDays, Code2, Download } from "lucide-react";
 import AnimatedSection from "./components/AnimatedSection";
+import ContactForm from "./components/ContactForm";
 import HeroIntro from "./components/HeroIntro";
-import NeuralParticles from "./components/NeuralParticles";
+import ThemeToggle from "./components/ThemeToggle";
 
 const navLinks = [
   "Home",
@@ -182,8 +178,8 @@ const blogPosts = [
 
 export default function Home() {
   return (
-    <main className="relative h-screen snap-y snap-mandatory overflow-y-auto bg-[#0A192F] text-white">
-      <NeuralParticles />
+    <main className="bg-page text-fg relative h-screen snap-y snap-mandatory overflow-y-auto">
+      <ThemeToggle />
 
       <AnimatedSection id="home">
         <div className="pointer-events-none absolute inset-0 opacity-35">
@@ -194,14 +190,14 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="bio" className="border-t border-white/10">
+      <AnimatedSection id="bio" className="border-section border-t">
         <div className="mx-auto w-full max-w-6xl px-6">
           <nav className="glass-card sticky top-4 z-20 mb-10 flex flex-wrap gap-3 p-4">
             {navLinks.map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase() === "home" ? "home" : link.toLowerCase()}`}
-                className="rounded-full border border-[#64FFDA]/35 px-4 py-1.5 text-sm text-[#64FFDA] transition hover:bg-[#64FFDA]/10"
+                className="hover-accent-muted rounded-full border border-accent-soft px-4 py-1.5 text-sm text-accent transition"
               >
                 {link}
               </a>
@@ -215,19 +211,19 @@ export default function Home() {
                 alt="Professional headshot"
                 width={900}
                 height={1200}
-                className="h-[360px] w-full rounded-xl object-cover shadow-[0_0_30px_rgba(100,255,218,0.45)]"
+                className="shadow-portrait h-[360px] w-full rounded-xl object-cover"
               />
             </div>
 
             <div className="glass-card p-7">
-              <h2 className="mb-4 text-3xl font-bold text-[#64FFDA]">About Me</h2>
-              <p className="mb-4 leading-relaxed text-slate-200">
+              <h2 className="text-accent mb-4 text-3xl font-bold">About Me</h2>
+              <p className="text-body-mid mb-4 leading-relaxed">
                 I am an AI Engineer and B.Tech AIML student at Symbiosis Institute
                 of Technology, currently working as a Research Intern at the Symbiosis
                 Centre for Applied Artificial Intelligence. I focus on computer vision,
                 deep learning, and multimodal AI for real-world decision support.
               </p>
-              <p className="leading-relaxed text-slate-300">
+              <p className="text-body-soft leading-relaxed">
                 My recent work includes domain adaptation for diabetic retinopathy,
                 automated ROP detection, GAN-based security modeling, and agentic AI
                 systems for legal reasoning. I actively support Women in Tech through
@@ -237,21 +233,21 @@ export default function Home() {
                 <a
                   href={resumeLink}
                   download
-                  className="rounded-full border border-[#64FFDA]/35 px-3 py-1 text-[#64FFDA]"
+                  className="rounded-full border border-accent-soft px-3 py-1 text-accent"
                 >
                   Download Resume
                 </a>
                 <a
                   href="mailto:devershikam@gmail.com"
-                  className="rounded-full border border-[#64FFDA]/35 px-3 py-1 text-[#64FFDA]"
+                  className="rounded-full border border-accent-soft px-3 py-1 text-accent"
                 >
                   devershikam@gmail.com
                 </a>
                 <a
-                  href="https://linkedin.com/in/devershika-mohane"
+                  href="https://www.linkedin.com/in/devershika-mohane"
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-[#FF7E5F]/35 px-3 py-1 text-[#FFBAA8]"
+                  className="rounded-full border border-warm-soft px-3 py-1 text-warm-light"
                 >
                   LinkedIn
                 </a>
@@ -259,7 +255,7 @@ export default function Home() {
                   href="https://github.com/Devershika"
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-[#64FFDA]/35 px-3 py-1 text-[#64FFDA]"
+                  className="rounded-full border border-accent-soft px-3 py-1 text-accent"
                 >
                   GitHub
                 </a>
@@ -269,17 +265,17 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="experience" className="border-t border-white/10">
+      <AnimatedSection id="experience" className="border-section border-t">
         <div className="mx-auto w-full max-w-5xl px-6">
-          <h2 className="mb-10 text-4xl font-bold text-[#FF7E5F]">Career Timeline</h2>
-          <div className="relative space-y-8 border-l border-[#FF7E5F]/30 pl-8">
+          <h2 className="text-warm mb-10 text-4xl font-bold">Career Timeline</h2>
+          <div className="relative space-y-8 border-l border-warm-soft pl-8">
             {experience.map((item) => (
               <article key={item.role} className="group relative">
-                <span className="absolute -left-[2.23rem] top-2 h-4 w-4 rounded-full border-2 border-[#FF7E5F] bg-[#0A192F] transition group-hover:bg-[#FF7E5F]" />
+                <span className="bg-page absolute -left-[2.23rem] top-2 h-4 w-4 rounded-full border-2 border-[var(--accent-warm)] transition group-hover:bg-[var(--accent-warm)]" />
                 <div className="glass-card p-6">
                   <h3 className="text-2xl font-semibold">{item.role}</h3>
-                  <p className="mb-3 text-[#FF7E5F]">{item.company}</p>
-                  <ul className="list-disc space-y-2 pl-5 text-slate-200">
+                  <p className="text-warm mb-3">{item.company}</p>
+                  <ul className="text-body-mid list-disc space-y-2 pl-5">
                     {item.wins.map((win) => (
                       <li key={win}>{win}</li>
                     ))}
@@ -291,9 +287,9 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="projects" className="border-t border-white/10">
+      <AnimatedSection id="projects" className="border-section border-t">
         <div className="mx-auto w-full max-w-6xl px-6">
-          <h2 className="mb-10 text-4xl font-bold text-[#64FFDA]">Project Gallery</h2>
+          <h2 className="text-accent mb-10 text-4xl font-bold">Project Gallery</h2>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {projects.map((project) => (
               <article key={project.title} className="flip-card h-96">
@@ -308,13 +304,13 @@ export default function Home() {
                     />
                     <div className="p-5">
                       <h3 className="mb-3 text-2xl font-semibold">{project.title}</h3>
-                      <span className="rounded-full border border-[#64FFDA]/35 px-3 py-1 text-sm text-[#64FFDA]">
+                      <span className="rounded-full border border-accent-soft px-3 py-1 text-sm text-accent">
                         {project.stack}
                       </span>
                     </div>
                   </div>
                   <div className="flip-card-face flip-back glass-card flex h-full flex-col justify-between p-5">
-                    <p className="leading-relaxed text-slate-200">{project.details}</p>
+                    <p className="text-body-mid leading-relaxed">{project.details}</p>
                   </div>
                 </div>
               </article>
@@ -323,26 +319,26 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="publications" className="border-t border-white/10">
+      <AnimatedSection id="publications" className="border-section border-t">
         <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-2">
           <div className="glass-card p-6">
-            <h2 className="mb-5 text-3xl font-bold text-[#64FFDA]">
+            <h2 className="text-accent mb-5 text-3xl font-bold">
               Publications
             </h2>
             <ul className="space-y-4">
               {publications.map((item) => (
                 <li
                   key={item.title}
-                  className="rounded-xl border border-white/10 bg-white/5 p-4"
+                  className="rounded-xl border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--foreground)_6%,transparent)] p-4"
                 >
                   <p className="mb-1">{item.title}</p>
-                  <p className="mb-3 text-sm text-slate-300">{item.venue}</p>
+                  <p className="text-body-soft mb-3 text-sm">{item.venue}</p>
                   <div className="flex gap-3 text-sm">
                     <a
                       href={item.pdf}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[#64FFDA]"
+                      className="text-accent inline-flex items-center gap-1"
                     >
                       <Download size={15} /> Download PDF
                     </a>
@@ -350,7 +346,7 @@ export default function Home() {
                       href={item.citation}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[#FF7E5F]"
+                      className="text-warm inline-flex items-center gap-1"
                     >
                       <Code2 size={15} /> Citation
                     </a>
@@ -361,7 +357,7 @@ export default function Home() {
           </div>
 
           <div id="blog" className="glass-card p-6">
-            <h2 className="mb-5 text-3xl font-bold text-[#FF7E5F]">Blogs</h2>
+            <h2 className="text-warm mb-5 text-3xl font-bold">Blogs</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {blogPosts.map((post) => (
                 <a
@@ -369,14 +365,14 @@ export default function Home() {
                   href={post.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border border-[#FF7E5F]/25 bg-[#112240]/70 p-4 transition hover:-translate-y-1"
+                  className="bg-blog-card rounded-xl border border-warm-25 p-4 transition hover:-translate-y-1"
                 >
                   <h3 className="mb-3 text-lg font-semibold">{post.title}</h3>
-                  <div className="flex items-center justify-between text-xs text-slate-300">
+                  <div className="text-body-soft flex items-center justify-between text-xs">
                     <span className="inline-flex items-center gap-1">
                       <CalendarDays size={14} /> {post.date}
                     </span>
-                    <span className="rounded-md bg-[#FF7E5F]/20 px-2 py-1 text-[#FFBAA8]">
+                    <span className="bg-accent-faint text-warm-light rounded-md px-2 py-1">
                       {post.time}
                     </span>
                   </div>
@@ -387,40 +383,16 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection id="contact" className="border-t border-white/10">
+      <AnimatedSection id="contact" className="border-section border-t">
         <div className="mx-auto w-full max-w-4xl px-6">
-          <div className="terminal-shell overflow-hidden rounded-2xl border border-[#64FFDA]/35">
-            <div className="flex items-center gap-2 border-b border-[#64FFDA]/25 px-4 py-3">
+          <div className="terminal-shell overflow-hidden rounded-2xl border border-accent-soft">
+            <div className="flex items-center gap-2 border-b border-accent-soft px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-red-400" />
               <span className="h-3 w-3 rounded-full bg-yellow-400" />
               <span className="h-3 w-3 rounded-full bg-green-400" />
-              <p className="ml-2 text-xs text-[#64FFDA]">contact.sh</p>
+              <p className="text-accent ml-2 text-xs">contact.sh</p>
             </div>
-            <form className="grid gap-4 p-5">
-              <label className="terminal-label">
-                name:
-                <input type="text" placeholder="Your Name" className="terminal-input" />
-              </label>
-              <label className="terminal-label">
-                email:
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="terminal-input"
-                />
-              </label>
-              <label className="terminal-label">
-                message:
-                <textarea
-                  rows={4}
-                  placeholder="Let's build something meaningful together."
-                  className="terminal-input resize-none"
-                />
-              </label>
-              <button type="submit" className="btn-teal w-fit">
-                <Mail size={16} /> Send Message
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </AnimatedSection>

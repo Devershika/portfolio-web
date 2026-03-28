@@ -87,20 +87,20 @@ export default function HeroIntro() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl">
+      <h1 className="text-fg text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
         Hi, I am{" "}
-        <span className="text-[#64FFDA] [text-shadow:0_0_28px_rgba(100,255,218,0.35)]">
+        <span className="text-accent [text-shadow:0_0_28px_color-mix(in_srgb,var(--accent)_38%,transparent)]">
           Devershika Mohane
         </span>
         !
       </h1>
 
       <p
-        className="min-h-[1.75rem] text-lg text-slate-200 sm:text-xl md:text-2xl"
+        className="text-body-mid min-h-[1.75rem] text-lg sm:text-xl md:text-2xl"
         aria-live="polite"
       >
-        <span className="text-white">{text}</span>
-        <span className="ml-0.5 inline-block animate-pulse text-[#64FFDA]">|</span>
+        <span className="text-fg">{text}</span>
+        <span className="text-accent ml-0.5 inline-block animate-pulse">|</span>
       </p>
 
       <div className="mt-2 flex items-center justify-center gap-4">
@@ -112,7 +112,7 @@ export default function HeroIntro() {
             rel={external ? "noopener noreferrer" : undefined}
             aria-label={label}
             title={label}
-            className="relative z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/35 text-white transition hover:border-[#64FFDA]/60 hover:bg-[#64FFDA]/10 hover:text-[#64FFDA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64FFDA]"
+            className="hover-accent-muted text-fg relative z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-[var(--border-subtle)] transition hover:border-[color-mix(in_srgb,var(--accent)_55%,transparent)] hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
           >
             {shortLabel === "Email" ? (
               <Mail className="h-5 w-5" strokeWidth={1.75} />
