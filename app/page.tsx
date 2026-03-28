@@ -218,35 +218,26 @@ export default function Home() {
             <div className="glass-card p-7">
               <h2 className="text-accent mb-4 text-3xl font-bold">About Me</h2>
               <p className="text-body-mid mb-4 leading-relaxed">
-                I am an AI Engineer and undergraduate student pursuing a B.Tech in
-                Artificial Intelligence and Machine Learning at Symbiosis Institute of
-                Technology, currently serving as a Research Intern at the Symbiosis
-                Centre for Applied Artificial Intelligence. My academic and research
-                pursuits are centered around computer vision, deep learning, and
-                multimodal AI, with a focus on developing intelligent systems for
-                real-world decision support.
+                I am an AI Engineer and B.Tech student in Artificial Intelligence and
+                Machine Learning at Symbiosis Institute of Technology, currently working
+                as a Research Intern at the Symbiosis Centre for Applied Artificial
+                Intelligence. My work focuses on computer vision, deep learning, and
+                multimodal AI, aimed at building intelligent systems for real-world
+                decision support.
               </p>
-              <p className="text-body-mid mb-4 leading-relaxed">
+              <p className="text-body-soft leading-relaxed">
                 I have gained hands-on experience working on diverse and impactful
                 projects, including domain adaptation for diabetic retinopathy,
                 automated detection of Retinopathy of Prematurity (ROP), GAN-based
-                approaches for cybersecurity modeling, and the development of agentic
-                AI systems for legal reasoning. These projects have enabled me to build a
-                strong foundation in designing scalable, data-driven, and reliable AI
-                solutions.
-              </p>
-              <p className="text-body-mid mb-4 leading-relaxed">
-                My approach to problem-solving is research-oriented and analytical,
-                with an emphasis on developing robust and interpretable models that can
-                be effectively applied in practical scenarios. I am particularly
-                interested in leveraging advanced AI techniques to address complex
-                challenges across healthcare, security, and intelligent automation.
-              </p>
-              <p className="text-body-soft leading-relaxed">
-                In addition to my technical pursuits, I actively engage in continuous
-                learning to stay aligned with emerging advancements in artificial
-                intelligence. I also value creativity and balance, which I pursue
-                through activities such as badminton and performing arts.
+                approaches for cybersecurity modeling, and the development of agentic AI
+                systems for legal reasoning. These experiences have strengthened my
+                ability to design scalable, data-driven, and reliable AI solutions. I
+                adopt a research-oriented and analytical approach to problem-solving,
+                with a focus on building robust and interpretable models for practical
+                applications. I am particularly interested in leveraging advanced AI
+                techniques to address complex challenges across healthcare, security, and
+                intelligent automation, while continuously learning and maintaining a
+                balance through activities such as badminton and performing arts.
               </p>
               <div className="mt-5 flex flex-wrap gap-3 text-sm">
                 <a
